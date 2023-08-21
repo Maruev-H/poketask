@@ -1,4 +1,4 @@
-import { PaginationContainer } from "./styled";
+import { PageButton, PaginationContainer } from "./styled";
 
 interface PaginationProps {
   total: number;
@@ -42,7 +42,7 @@ export const Pagination = ({
       if (start > 1) {
         pageNumbers.push(
           <li key="1">
-            <button onClick={() => handlePageChange(1)}>1</button>
+            <PageButton onClick={() => handlePageChange(1)}>1</PageButton>
           </li>
         );
         if (start > 2) {
@@ -52,8 +52,8 @@ export const Pagination = ({
 
       for (let i = start; i <= end; i++) {
         pageNumbers.push(
-          <li key={i} className={i === currentPage ? "active" : undefined}>
-            <button onClick={() => handlePageChange(i)}>{i}</button>
+          <li key={i}>
+            <PageButton isActive={i === currentPage} onClick={() => handlePageChange(i)}>{i}</PageButton>
           </li>
         );
       }
@@ -64,17 +64,17 @@ export const Pagination = ({
         }
         pageNumbers.push(
           <li key={totalPages}>
-            <button onClick={() => handlePageChange(totalPages)}>
+            <PageButton onClick={() => handlePageChange(totalPages)}>
               {totalPages}
-            </button>
+            </PageButton>
           </li>
         );
       }
     } else {
       for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(
-          <li key={i} className={i === currentPage ? "active" : undefined}>
-            <button onClick={() => handlePageChange(i)}>{i}</button>
+          <li key={i}>
+            <PageButton isActive={i === currentPage} onClick={() => handlePageChange(i)}>{i}</PageButton>
           </li>
         );
       }
