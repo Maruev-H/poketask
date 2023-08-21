@@ -1,8 +1,6 @@
-import React from "react";
-import styled from "@emotion/styled";
 import { PaginationContainer } from "./styled";
 
-interface PaginationProps<T> {
+interface PaginationProps {
   total: number;
   itemsPerPage?: number;
   maxPageItems?: number;
@@ -10,13 +8,13 @@ interface PaginationProps<T> {
   setCurrentPage: (arg: number) => void;
 }
 
-export const Pagination = <T extends object>({
+export const Pagination = ({
   total,
   itemsPerPage = 10,
   maxPageItems = 3,
   currentPage,
   setCurrentPage,
-}: PaginationProps<T>) => {
+}: PaginationProps) => {
   const totalPages = Math.floor(total / itemsPerPage);
   const handlePageChange = (pageNum: number) => {
     setCurrentPage(pageNum);
