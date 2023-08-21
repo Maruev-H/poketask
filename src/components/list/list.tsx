@@ -1,21 +1,17 @@
 import React from "react";
-import { Ability, useAbilities } from "./hooks/useAbilities";
+import { Ability } from "./hooks/useAbilities";
 import { CardList, Card } from "./styled";
 
 interface IList {
-  itemsPerPage: number;
-  currentPage: number;
+  items: Ability[]
 }
 
-export const List: React.FC<IList> = ({ itemsPerPage, currentPage }) => {
-  const { data } = useAbilities({
-    limit: itemsPerPage,
-    offset: currentPage * itemsPerPage,
-  });
+export const List: React.FC<IList> = ({ items }) => {
+
 
   return (
     <CardList>
-      {data?.results?.map((item: Ability) => (
+      {items?.map((item: Ability) => (
         <Card key={item?.name}>{item?.name}</Card>
       ))}
     </CardList>
