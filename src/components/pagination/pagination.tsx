@@ -15,7 +15,7 @@ export const Pagination = ({
   currentPage,
   setCurrentPage,
 }: PaginationProps) => {
-  const totalPages = Math.floor(total / itemsPerPage);
+  const totalPages = Math.ceil(total / itemsPerPage);
   const handlePageChange = (pageNum: number) => {
     setCurrentPage(pageNum);
   };
